@@ -6,7 +6,7 @@
     <span class="top-expression">{{ expression }}</span>
   </el-row>
   <el-row class="top-uniqueValue-div calc-width"
-  ><span class="top-uniqueValue">{{
+    ><span class="top-uniqueValue">{{
       numtoString(strtoNumber(curval, radix), radix)
     }}</span></el-row
   >
@@ -21,34 +21,33 @@
     </el-col>
     <el-col span="6">
       <div class="line">
-        {{ numtoString(strtoNumber(curval, radix), 16) }}
+        {{ binsto16(valtoBinstr(strtoNumber(curval, radix))) }}
       </div>
       <div class="line">
         {{ numtoString(strtoNumber(curval, radix), 10) }}
       </div>
       <div class="line">
-        {{ numtoString(strtoNumber(curval, radix), 8) }}
+        {{ binsto8(valtoBinstr(strtoNumber(curval, radix))) }}
       </div>
       <div class="line">
-        {{ numtoString(strtoNumber(curval, radix), 2) }}
+        {{ valtoBinstr(strtoNumber(curval, radix)) }}
       </div>
     </el-col>
   </el-row>
   <el-tabs
-      type="border-card"
-      class="calc-width"
-      v-model="activeTab"
-      :before-leave="handleTabclick"
+    type="border-card"
+    class="calc-width"
+    v-model="activeTab"
+    :before-leave="handleTabclick"
   >
     <el-tab-pane label="全键盘" name="keys" class="keys-btn">
       <el-row>
         <el-button
-            plain
-            :disabled="keysDisabled(16)"
-            @click="handleKeysClick('A')"
-        >A
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(16)"
+          @click="handleKeysClick('A')"
+          >A
+        </el-button>
         <el-button plain @click="handleKeysClick('<<')">&lt;&lt;</el-button>
         <el-button plain @click="handleKeysClick('>>')">>></el-button>
         <el-button plain @click="handleKeysClick('ce')">CE</el-button>
@@ -56,12 +55,11 @@
       </el-row>
       <el-row>
         <el-button
-            plain
-            :disabled="keysDisabled(16)"
-            @click="handleKeysClick('B')"
-        >B
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(16)"
+          @click="handleKeysClick('B')"
+          >B
+        </el-button>
         <el-button plain @click="handleKeysClick('(')">(</el-button>
         <el-button plain @click="handleKeysClick(')')">)</el-button>
         <el-button plain @click="handleKeysClick('%')">%</el-button>
@@ -69,150 +67,136 @@
       </el-row>
       <el-row>
         <el-button
-            plain
-            :disabled="keysDisabled(16)"
-            @click="handleKeysClick('C')"
-        >C
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(16)"
+          @click="handleKeysClick('C')"
+          >C
+        </el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(8)"
-            @click="handleKeysClick('7')"
-        >7
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(8)"
+          @click="handleKeysClick('7')"
+          >7
+        </el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(10)"
-            @click="handleKeysClick('8')"
-        >8
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(10)"
+          @click="handleKeysClick('8')"
+          >8
+        </el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(10)"
-            @click="handleKeysClick('9')"
-        >9
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(10)"
+          @click="handleKeysClick('9')"
+          >9
+        </el-button>
         <el-button plain @click="handleKeysClick('*')">×</el-button>
       </el-row>
       <el-row>
         <el-button
-            plain
-            :disabled="keysDisabled(16)"
-            @click="handleKeysClick('D')"
-        >D
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(16)"
+          @click="handleKeysClick('D')"
+          >D
+        </el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(8)"
-            @click="handleKeysClick('4')"
-        >4
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(8)"
+          @click="handleKeysClick('4')"
+          >4
+        </el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(8)"
-            @click="handleKeysClick('5')"
-        >5
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(8)"
+          @click="handleKeysClick('5')"
+          >5
+        </el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(8)"
-            @click="handleKeysClick('6')"
-        >6
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(8)"
+          @click="handleKeysClick('6')"
+          >6
+        </el-button>
         <el-button plain @click="handleKeysClick('-')">-</el-button>
       </el-row>
       <el-row>
         <el-button
-            plain
-            :disabled="keysDisabled(16)"
-            @click="handleKeysClick('E')"
-        >E
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(16)"
+          @click="handleKeysClick('E')"
+          >E
+        </el-button>
         <el-button plain @click="handleKeysClick('1')">1</el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(8)"
-            @click="handleKeysClick('2')"
-        >2
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(8)"
+          @click="handleKeysClick('2')"
+          >2
+        </el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(8)"
-            @click="handleKeysClick('3')"
-        >3
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(8)"
+          @click="handleKeysClick('3')"
+          >3
+        </el-button>
         <el-button plain @click="handleKeysClick('+')">＋</el-button>
       </el-row>
       <el-row>
         <el-button
-            plain
-            :disabled="keysDisabled(16)"
-            @click="handleKeysClick('F')"
-        >F
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(16)"
+          @click="handleKeysClick('F')"
+          >F
+        </el-button>
         <el-button plain @click="handleKeysClick('neg')">＋/﹣</el-button>
         <el-button plain @click="handleKeysClick('0')">0</el-button>
         <el-button
-            plain
-            :disabled="keysDisabled(32)"
-            @click="handleKeysClick('.')"
-        >.
-        </el-button
-        >
+          plain
+          :disabled="keysDisabled(32)"
+          @click="handleKeysClick('.')"
+          >.
+        </el-button>
         <el-button plain @click="handleKeysClick('=')">＝</el-button>
       </el-row>
     </el-tab-pane>
     <el-tab-pane label="二进制" name="bins">
       <div style="margin-bottom: 2px"></div>
       <template
-          v-for="i in [...Array(64 / 16).keys()].map((item) => 64 / 16 - item)"
+        v-for="i in [...Array(64 / 16).keys()].map((item) => 64 / 16 - item)"
       >
         <el-row>
           <div
-              v-for="j in [...Array(16).keys()].map((item) => i * 16 - 1 - item)"
-              :class="binsStyles(j)"
+            v-for="j in [...Array(16).keys()].map((item) => i * 16 - 1 - item)"
+            :class="binsStyles(j)"
           >
             <el-button
-                type="text"
-                @click="handleBitClick(j)"
-                :disabled="j>=lenbits?true:false"
-            >{{
+              type="text"
+              @click="handleBitClick(j)"
+              :disabled="j >= lenbits ? true : false"
+              >{{
                 j >= lenbits
-                    ? 0
-                    : (strtoNumber(curval, radix) & (1 << j)) === 0
-                    ? 0
-                    : 1
+                  ? 0
+                  : (strtoNumber(curval, radix) & (1 << j)) === 0
+                  ? 0
+                  : 1
               }}
-            </el-button
-            >
+            </el-button>
             <div v-if="j % 4 == 0" class="bins-tips">{{ j }}</div>
           </div>
         </el-row>
       </template>
     </el-tab-pane>
-    <el-tab-pane
-        :label="signornot ? '有符号' : '无符号'"
-        name="signornot"
-    ></el-tab-pane>
+    <!-- <el-tab-pane
+      :label="signornot ? '有符号' : '无符号'"
+      name="signornot"
+    ></el-tab-pane> -->
     <el-tab-pane :label="sizedes" name="lenbits"></el-tab-pane>
   </el-tabs>
 </template>
 
 <script>
-import {ref} from "vue";
-import {radixOption} from "@/libs/radix"
+import { ref } from "vue";
+import { radixOption } from "@/libs/radix";
 
 export default {
   name: "ProgrammerCalculator",
@@ -221,45 +205,48 @@ export default {
       setBits,
       setSign,
       radixPrefix,
+      strtoRadixstr,
       isNumber,
       strtoNumber,
       numtoString,
       isRange,
       bytesDescription,
       bitofVal,
-      bitChange
-    } = radixOption()
+      bitChange,
+      valtoBinstr,
+      binsto16,
+      binsto8,
+    } = radixOption();
 
     const activeTab = "keys";
 
     const signornot = ref(true);
-    setSign(signornot.value)
+    setSign(signornot.value);
     const lenbits = ref(32);
-    setBits(lenbits.value)
+    setBits(lenbits.value);
     const sizedes = ref(bytesDescription());
-
 
     const handleTabclick = (active, oldactive) => {
       if (active === "signornot") {
         signornot.value = !signornot.value;
-        setSign(signornot)
+        setSign(signornot);
         return false;
       }
       if (active === "lenbits") {
         switch (lenbits.value) {
           case 8:
             lenbits.value = 16;
-            setBits(lenbits.value)
+            setBits(lenbits.value);
             sizedes.value = bytesDescription();
             break;
           case 16:
             lenbits.value = 32;
-            setBits(lenbits.value)
+            setBits(lenbits.value);
             sizedes.value = bytesDescription();
             break;
           case 32:
             lenbits.value = 8;
-            setBits(lenbits.value)
+            setBits(lenbits.value);
             sizedes.value = bytesDescription();
             break;
           default:
@@ -284,12 +271,16 @@ export default {
     }
 
     function handleSelect(key, keyPath) {
+      const old = radix.value;
       radix.value = key;
+      curval.value = numtoString(strtoNumber(curval.value, old), radix.value);
     }
 
     function binsStyles(param) {
       var temVal = Number(
-          curval.value.length === 0 ? "0" : radixPrefix(radix.value) + curval.value
+        curval.value.length === 0
+          ? "0"
+          : radixPrefix(radix.value) + curval.value
       );
       var style = "bins-btn ";
       if (temVal & (1 << param)) {
@@ -317,7 +308,8 @@ export default {
           curval.value = "";
           uniqueValue.value = eval(expression.value);
           curval.value = numtoString(uniqueValue.value, radix.value);
-          lastexpression.value = expression.value + "=" + curval.value;
+          lastexpression.value =
+            expression.value + "=" + strtoRadixstr(curval.value, radix.value);
           expression.value = "";
           break;
         case "-":
@@ -328,10 +320,12 @@ export default {
         case "<<":
         case ">>":
         case ")":
-          expression.value +=
-              curval.value === ""
-                  ? "0" + param
-                  : radixPrefix(radix.value) + curval.value + param;
+          if (curval.value === "") {
+            expression.value += "0" + curval.value + param;
+          } else {
+            expression.value +=
+              strtoRadixstr(curval.value, radix.value) + param;
+          }
           curval.value = "";
           break;
         case "ce":
@@ -351,14 +345,23 @@ export default {
           expression.value += param;
           break;
         default:
-          curval.value += param;
+          if (isNumber(param)) {
+            if (isRange(strtoNumber(curval.value + param, radix.value))) {
+              curval.value += param;
+            }
+          } else {
+            curval.value += param;
+          }
           break;
       }
     }
 
     const handleBitClick = (bit) => {
-      curval.value = numtoString(bitChange(strtoNumber(curval.value, radix.value), bit), radix.value)
-    }
+      curval.value = numtoString(
+        bitChange(strtoNumber(curval.value, radix.value), bit),
+        radix.value
+      );
+    };
     return {
       lastexpression,
       expression,
@@ -379,6 +382,7 @@ export default {
       setBits,
       setSign,
       radixPrefix,
+      strtoRadixstr,
       isNumber,
       strtoNumber,
       numtoString,
@@ -386,9 +390,12 @@ export default {
       bytesDescription,
       bitofVal,
       handleBitClick,
-    }
-  }
-}
+      valtoBinstr,
+      binsto16,
+      binsto8,
+    };
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -477,7 +484,6 @@ export default {
 /deep/ .el-menu-item {
   padding-left: 0 !important;
 }
-
 
 /deep/ .el-tabs__item {
   height: min-content;
